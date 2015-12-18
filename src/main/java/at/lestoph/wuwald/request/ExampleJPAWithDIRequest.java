@@ -18,7 +18,7 @@ package at.lestoph.wuwald.request;
     import javax.ws.rs.Produces;
     import javax.ws.rs.core.MediaType;
 
-    @Path("example_jpa_di")
+    @Path("ingredients_jpa_di")
     public class ExampleJPAWithDIRequest {
 
         @Inject
@@ -26,11 +26,11 @@ package at.lestoph.wuwald.request;
         @Inject
         RecipeAdapter mAdapter;
 
-        @Path("{example}/{example2}")
+        @Path("{ingredients}/{instructions}")
         @GET
         @Produces(MediaType.APPLICATION_JSON)
-        public List<Recipe> example(@PathParam("example") String example, @PathParam("example2") String example2) {
-            List<RecipeEntity> list = mModel.addAndList(example,example2);
+        public List<Recipe> ingredients(@PathParam("ingredients") String ingredients, @PathParam("instructions") String instructions) {
+            List<RecipeEntity> list = mModel.addAndList(ingredients,instructions);
             List<Recipe> resList = mAdapter.adapt(list);
             return resList;
         }
